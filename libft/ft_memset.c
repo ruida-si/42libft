@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 11:12:55 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/18 11:12:59 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/18 16:04:35 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/18 16:28:19 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+void	*memset(void *s, int c, size_t n)
+{
+	size_t	i;
 
-int	ft_isalpha(char c);
-char	ft_toupper(char c);
-int	ft_isdigit(char c);
-char	ft_tolower(char c);
-int	ft_isalnum(char c);
-int	ft_isprint(char c);
-int	ft_strlen(char *str);
-char	*ft_memset(char *str, char c, int a);
+	i = 0;
+	while (i < n)
+	{
+		s[i] = c;
+		i++;
+	}
+	return (s);
+}
+/*
+#include <stdio.h>
 
-#endif
+int main()
+{
+	char str[] = "Rui";
+	char c = '0';
+	int a = 2;
+	printf("%s\n", ft_memset(str, c, a));
+}
+*/
