@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 16:04:35 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/18 16:28:19 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/19 15:36:40 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/19 15:36:44 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memset(void *s, int c, size_t n)
-{
-	size_t	i;
+#include "libft.h"
 
-	i = 0;
-	while (i < n)
-	{
-		s[i] = c;
-		i++;
-	}
-	return (s);
-}
-/*
-#include <stdio.h>
-
-int main()
+void	ft_bzero(void *b, size_t n)
 {
-	char str[] = "Rui";
-	char c = '0';
-	int a = 2;
-	printf("%s\n", ft_memset(str, c, a));
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)b;
+	while (n-- > 0)
+		*(ptr++) = 0;
 }
-*/

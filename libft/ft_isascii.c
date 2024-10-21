@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(char c)
+#include "libft.h"
+
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
 	else
 		return (0);
 }
-
-#include <stdio.h>
-#include <ctype.h>
-
-int main()
-{
-	printf("%i\n", ft_isascii(-1));
-	printf("%i\n", ft_isascii('B'));
-	printf("%i\n", ft_isascii('k'));	
-}
-
+//
+// #include <stdio.h>
+// #include <ctype.h>
+//
+// int main()
+// {
+// 	printf("%i\n", ft_isascii(-1));
+// 	printf("%i\n", ft_isascii('B'));
+// 	printf("%i\n", ft_isascii('k'));	
+// }
