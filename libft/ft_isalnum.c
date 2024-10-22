@@ -29,4 +29,3 @@ int	ft_isalnum(int c)
 // 	printf("%i\n", ft_isalnum('0'));
 // 	printf("%i\n", ft_isalnum('\n'));	
 // }
-

@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 11:30:35 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/18 11:30:38 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/22 12:31:35 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/22 12:31:38 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (c >= 'A' && c <= 'Z')
-		c += 32;
-	return (c);
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	if (!dest && !src)
+		return (0);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	while (n-- > 0)
+		*d++ = *s++;
+	return (dest);
 }
-//
-// #include <stdio.h>
-// #include <ctype.h>
 //
 // int main()
 // {
-// 	char c[] = "RuJn45";
+// 	int n = 4;
 // 	int i = 0;
-// 	while (c[i])
-// 	{
-// 		printf("%c", ft_tolower(c[i]));
-// 		i++;
-// 	}
+// 	char src[] = "42porto";
+// 	char *dest = src+2;
+// 	printf("%s\n", dest);
+// 	ft_memcpy(dest, src, n);
+// 	printf("%s\n", dest);
 // }

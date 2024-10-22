@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 15:36:40 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/19 15:36:44 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/22 17:12:48 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/22 17:12:53 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
+#include <bsd/string.h>
 
-void	ft_bzero(void *b, size_t n)
-{
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)b;
-	while (n-- > 0)
-		*ptr++ = 0;
-}
 //
-// int main()
+// size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 // {
-// 	char str[] = "Rui Campos";
-// 	int n = 6;
-// 	int i = 0;
-// 	int len = ft_strlen(str);
-// 	printf("%s\n", str);
-// 	ft_bzero(str, n);
-// 	while (i < len)
-// 	{
-// 		write(1, &str[i], 1);
-// 		i++;
-// 	}
+// 	size_t	i;
+// 	size_t	j;
+//
+// 	j = 0;
+// 	i = ft_strlen(dst);
+// 	while (src[i])
+// 		dst[i++] = src[j++];
+// 	return (ft_strlen(dst));
 // }
+
+int main()
+{
+	char dst[] = "Rui Campos";
+	char src[] = "Campos";
+	size_t n = 4;
+	printf("%s\n", dst);
+	size_t b = strlcat(dst, src, n);
+	printf("%zu\n %s\n", b, dst);
+}
