@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 17:12:48 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/22 17:12:53 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/23 13:46:24 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/23 13:46:27 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strrchr(const char *str, int c)
 {
-	size_t	s;
-	size_t	d;
-	size_t	j;
+	int	len;
 
-	j = 0;
-	d = ft_strlen(dst);
-	s = ft_strlen(src);
-	if (size <= d)
-		return (size + s);
-	while (src[j] && (d < size -1))
-		dst[d++] = src[j++];
-	dst[d] = 0;
-	return (d);
+	len = ft_strlen(str);
+	if ((char)c == 0)
+		return ((char *)str + len);
+	while (len >= 0)
+	{
+		if (str[len] == (char)c)
+			return ((char *)str + len);
+		len--;
+	}
+	return (NULL);
 }
 /*
 int main()
 {
-	char dst[] = "Rui";
-	char src[] = "Campos";
-	size_t n = 7;
-	printf("%s\n", dst);
-	ft_strlcat(dst, src, n);
-	printf("%s\n", dst);
-	printf("%zu\n", ft_strlcat(dst, src, 3));
+	char str[] = "42 porto";
+	int c = 0;
+	printf("%s\n", ft_strrchr(str, c));
+	printf("%s\n", strrchr(str, c));
 }
 */
