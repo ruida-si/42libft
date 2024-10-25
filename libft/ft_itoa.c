@@ -1,47 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 14:51:58 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/25 14:52:01 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/25 18:08:48 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/25 18:08:51 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+int	len(int n)
 {
-	char	*new;
+	int		min;
+	long	numb;
 	int		i;
-	int		len;	
 
-	len = ft_strlen(s1) -1;
 	i = 0;
-	if (!s1 || !set)
-		return (NULL);
-	while (ft_strchr(set, s1[i]) && i < len)
-		i++;
-	while (ft_strchr(set, s1[len]))
-		len--;
-	new = malloc(len - i + 2);
-	if (!new)
-		return (NULL);
-	while (i <= len)
+	min = 0;
+	numb = n;
+	if (n < 0)
 	{
-		*new++ = s1[i];
+		min = 1;
+		numb = -n;
+	}
+	while (numb > 0)
+	{
+		numb /= 10;
 		i++;
 	}
-	*new = '\0';
+	return (i + min);
+}
+char	*ft_itoa(int n)
+{
+	int		i;
+	char	*new;
+	long	number;
+
+	new = malloc(len(n) + 1);
+	if (!new)
+		return (NULL);
+	i = len(n) +1;
+	new[i] = '\0';
+	i--;
+	while (number > 0)
+	{
+		new[i] = number % 10 + '0';
+		number /= 10;
+		i--;
+	}
+	if (n < 0)
+		new[i] = '-';
 	return (new);
 }
-/*
+
 int main()
 {
-	char s1[] = "porto42";
-	char set[] = "42";
-	printf("%s\n", ft_strtrim(s1, set));
+	int n = -1234;
+	printf("%s\n", ft_itoa(n));
 }
-*/
