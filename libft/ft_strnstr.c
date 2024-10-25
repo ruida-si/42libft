@@ -1,40 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 16:02:06 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/21 16:02:10 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/24 11:36:26 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/24 11:36:28 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strnstr(const char *big, const char *lit, size_t len)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (src[i] && i < size -1)
+	if (*lit == '\0')
+		return ((char *)big);
+	while (big[i] && i < len)
 	{
-		dst[i] = src[i];
+		j = 0;
+		if (big[i] == lit[j])
+		{
+			while (big[i + j] == lit[j] && lit[j] && (i + j) < len)
+				j++;
+			if (!lit[j])
+				return ((char *)big + i);
+		}
 		i++;
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	return (NULL);
 }
-//
-// int main()
-// {
-//     char dst[5];
-//     char src[] = "Rui";
-//     size_t size = 1;
-//     printf("%s\n", dst);
-//     printf("%li\n", ft_strlcpy(dst, src, size));
-//     printf("%s\n", dst);
-// }
-//
+/*
+int main()
+{
+	char b[] = "42porto";
+	char lit[] = "rt";
+	int len = 5;
+	printf("%s\n", ft_strnstr(b, lit, len));
+}
+*/

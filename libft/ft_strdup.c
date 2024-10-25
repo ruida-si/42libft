@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 16:02:06 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/21 16:02:10 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/24 14:10:26 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/24 14:10:29 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strdup(const char *str)
 {
-	size_t	i;
+	char	*new;
+	int		i;
 
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (src[i] && i < size -1)
+	new = malloc(sizeof(char) * ft_strlen(str) + 1);
+	if (!new)
+		return (NULL);
+	while (str[i])
 	{
-		dst[i] = src[i];
+		new[i] = str[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	new[i] = '\0';
+	return (new);
 }
-//
-// int main()
-// {
-//     char dst[5];
-//     char src[] = "Rui";
-//     size_t size = 1;
-//     printf("%s\n", dst);
-//     printf("%li\n", ft_strlcpy(dst, src, size));
-//     printf("%s\n", dst);
-// }
-//
+/*
+int main()
+{
+	char s[] = "42porto";
+	printf("%s\n", ft_strdup(s));
+}
+*/

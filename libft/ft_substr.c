@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 16:02:06 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/21 16:02:10 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/25 12:33:44 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/25 13:29:45 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*new;
 	size_t	i;
 
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	new = malloc(len + 1);
+	if (!new)
+		return (NULL);
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (src[i] && i < size -1)
+	while (i < len)
 	{
-		dst[i] = src[i];
+		new[i] = s[start++];
 		i++;
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	new[i] = '\0';
+	return (new);
 }
-//
-// int main()
-// {
-//     char dst[5];
-//     char src[] = "Rui";
-//     size_t size = 1;
-//     printf("%s\n", dst);
-//     printf("%li\n", ft_strlcpy(dst, src, size));
-//     printf("%s\n", dst);
-// }
-//
+/*
+int main()
+{
+	char s[] = "ruicampos";
+	int start = 3;
+	int len = 3;
+	printf("%s\n", ft_substr(s, start, len));
+}
+*/

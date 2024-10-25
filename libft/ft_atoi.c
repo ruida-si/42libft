@@ -1,40 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 16:02:06 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/21 16:02:10 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/24 12:58:15 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/24 12:58:26 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int	sign;
+	int	number;
+	int	i;
 
+	sign = 1;
+	number = 0;
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (src[i] && i < size -1)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		dst[i] = src[i];
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		number = number * 10 + (str[i] - '0');
+		i++;
+	}
+	return (number * sign);
 }
-//
-// int main()
-// {
-//     char dst[5];
-//     char src[] = "Rui";
-//     size_t size = 1;
-//     printf("%s\n", dst);
-//     printf("%li\n", ft_strlcpy(dst, src, size));
-//     printf("%s\n", dst);
-// }
-//
+/*
+int main()
+{
+	char str[] = "\t \r \n 123";
+	printf("%i\n", ft_atoi(str));
+	printf("%i\n", atoi(str));
+}
+*/

@@ -17,26 +17,30 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	s;
 	size_t	d;
 	size_t	j;
+	size_t	i;
 
-	j = 0;
-	d = ft_strlen(dst);
 	s = ft_strlen(src);
+	d = ft_strlen(dst);
 	if (size <= d)
 		return (size + s);
-	while (src[j] && (d < size -1))
-		dst[d++] = src[j++];
-	dst[d] = 0;
-	return (d);
+	j = 0;
+	i = d;
+	while (src[j] && i < size -1)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	dst[i] = '\0';
+	return (d + s);
 }
-/*
-int main()
-{
-	char dst[] = "Rui";
-	char src[] = "Campos";
-	size_t n = 7;
-	printf("%s\n", dst);
-	ft_strlcat(dst, src, n);
-	printf("%s\n", dst);
-	printf("%zu\n", ft_strlcat(dst, src, 3));
-}
-*/
+//
+// int main()
+// {
+// 	char dst[] = "Rui";
+// 	char src[] = "C";
+// 	size_t n = 7;
+// 	printf("%s\n", dst);
+// 	ft_strlcat(dst, src, n);
+// 	printf("%s\n", dst);
+// }

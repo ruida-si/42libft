@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 16:02:06 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/21 16:02:10 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/24 11:23:29 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/24 11:23:32 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (src[i] && i < size -1)
+	while (i < n)
 	{
-		dst[i] = src[i];
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 		i++;
 	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	return (0);
 }
-//
-// int main()
-// {
-//     char dst[5];
-//     char src[] = "Rui";
-//     size_t size = 1;
-//     printf("%s\n", dst);
-//     printf("%li\n", ft_strlcpy(dst, src, size));
-//     printf("%s\n", dst);
-// }
-//
+/*
+int main()
+{
+    char s1[] = "rui42";
+    char s2[] = "ruui89";    
+    size_t n = 4;
+    printf("%i\n", ft_memcmp(s1, s2, n));
+    printf("%i\n", memcmp(s1, s2, n));
+}
+*/

@@ -1,36 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 14:36:05 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/23 14:36:08 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/25 14:51:58 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/25 14:52:01 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
+	char	*new;
+	int		i;
+	int		len;
+	int		j;
 
+	len = ft_strlen(s1);
 	i = 0;
-	while (str1[i] && str2[i] && i < n && (str1[i] == str2[i]))
+	if (!s1 || !set)
+		return (NULL);
+	while (ft_strchr(set, s1[i]) && i < len)
 		i++;
-	if (i == n)
-		return (0);
-	else
-		return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+	j = len -1;
+	while (ft_strchr(set, s1[j]))
+		j--;
+	new = malloc(j - i + 2);
+	if (!new)
+		return (NULL);
+	while (i <= j)
+	{
+		*new++ = s1[i];
+		i++;
+	}
+	*new = '\0';
+	return (new);
 }
 /*
 int main()
 {
-	char s1[] = "Rui der";
-	char s2[] = "Ru";
-	int n = 3;
-	printf("%i\n", ft_strncmp(s1, s2, n));
-	printf("%i\n", strncmp(s1, s2, n));
+	char s1[] = "porto42";
+	char set[] = "42";
+	printf("%s\n", ft_strtrim(s1, set));
 }
 */
