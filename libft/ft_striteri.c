@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 11:56:20 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/28 11:56:24 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/28 11:58:18 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/28 11:58:24 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int		i;
-	int		len;
-	char	*new;
 
 	i = 0;
-	len = ft_strlen(s1) - 1;
-	if (!s1 || !set)
-		return (NULL);
-	while (ft_strchr(set, s1[i]) && i <= len)
+	while (s[i])
+	{
+		f(i, s + i);
 		i++;
-	if (i > len)
-		return (ft_strdup(""));
-	while (ft_strchr(set, s1[len]))
-		len--;
-	new = malloc(len - i + 2);
-	if (!new)
-		return (NULL);
-	ft_strlcpy(new, s1 + i, len - i + 2);
-	return (new);
+	}
 }
 /*
+void	test(unsigned int i, char *s)
+{
+	if (i % 2 == 0)
+		s[0] = ft_toupper(s[0]);
+}
+
 int main()
 {
-	char s[] = "ruiauburi";
-	char set[] = "rui";
-	printf(".%s.\n", ft_strtrim(s, set));
+	char s[] = "rui campos";
+	ft_striteri(s, test);
+	printf(".%s.\n", s);
 }
 */

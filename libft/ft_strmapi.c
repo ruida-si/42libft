@@ -1,44 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 11:56:20 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/28 11:56:24 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/28 11:54:52 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/28 11:54:57 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	char	*str;
 	int		i;
-	int		len;
-	char	*new;
 
 	i = 0;
-	len = ft_strlen(s1) - 1;
-	if (!s1 || !set)
+	str = malloc(ft_strlen(s) + 1);
+	if (!str)
 		return (NULL);
-	while (ft_strchr(set, s1[i]) && i <= len)
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
 		i++;
-	if (i > len)
-		return (ft_strdup(""));
-	while (ft_strchr(set, s1[len]))
-		len--;
-	new = malloc(len - i + 2);
-	if (!new)
-		return (NULL);
-	ft_strlcpy(new, s1 + i, len - i + 2);
-	return (new);
+	}
+	str[i] = '\0';
+	return (str);
 }
 /*
+char test(unsigned int i, char c)
+{
+	if (i % 2 == 0)
+		return (ft_toupper(c));
+	return (c);
+}
+
 int main()
 {
-	char s[] = "ruiauburi";
-	char set[] = "rui";
-	printf(".%s.\n", ft_strtrim(s, set));
+	char s[] = "rui campos";	
+	printf(".%s.\n", ft_strmapi(s, test));
 }
 */

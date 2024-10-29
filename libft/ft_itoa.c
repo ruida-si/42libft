@@ -5,59 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 18:08:48 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/25 18:08:51 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/28 11:56:48 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/28 11:56:52 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	len(int n)
+static int	length(long number)
 {
-	int		min;
-	long	numb;
-	int		i;
+	int	i;
 
 	i = 0;
-	min = 0;
-	numb = n;
-	if (n < 0)
+	if (number < 0)
 	{
-		min = 1;
-		numb = -n;
-	}
-	while (numb > 0)
-	{
-		numb /= 10;
+		number *= -1;
 		i++;
 	}
-	return (i + min);
+	while (number > 0)
+	{
+		number /= 10;
+		i++;
+	}
+	return (i);
 }
+
 char	*ft_itoa(int n)
 {
-	int		i;
+	int		len;
 	char	*new;
 	long	number;
 
-	new = malloc(len(n) + 1);
+	if (n == 0)
+		return (ft_strdup("0"));
+	number = n;
+	len = length(number);
+	if (number < 0)
+		number *= -1;
+	new = malloc(len + 1);
 	if (!new)
 		return (NULL);
-	i = len(n) +1;
-	new[i] = '\0';
-	i--;
+	new[len] = '\0';
+	len--;
 	while (number > 0)
 	{
-		new[i] = number % 10 + '0';
+		new[len] = number % 10 + '0';
 		number /= 10;
-		i--;
+		len--;
 	}
-	if (n < 0)
-		new[i] = '-';
+	if (len == 0)
+		new[len] = '-';
 	return (new);
 }
-
+/*
 int main()
 {
-	int n = -1234;
-	printf("%s\n", ft_itoa(n));
+	int n = 0;
+	printf(".%s.\n", ft_itoa(n));
 }
+*/
