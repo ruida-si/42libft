@@ -1,45 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 11:56:20 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/28 11:56:24 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/29 16:24:49 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/29 16:24:52 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+t_list	*ft_lstnew(void *content)
 {
-	int		i;
-	int		len;
-	char	*new;
+	t_list	*new;
 
-	i = 0;
-	len = ft_strlen(s1) - 1;
-	if (!s1 || !set)
-		return (NULL);
-	while (ft_strchr(set, s1[i]) && i <= len)
-		i++;
-	if (i <= len)
-	{
-		while (ft_strchr(set, s1[len]))
-			len--;
-	}
-	new = malloc(len - i + 2);
+	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	ft_strlcpy(new, s1 + i, len - i + 2);
+	new->content = content;
+	new->next = NULL;
 	return (new);
 }
 /*
 int main()
 {
-	char s[] = "ruiuri";
-	char set[] = "rui";
-	printf(".%s.\n", ft_strtrim(s, set));
+	char s[] = "rui";
+	t_list *new = ft_lstnew(s);
+	printf("%s\n", (char *)new->content);
+	printf("%p\n", new);
 }
 */
