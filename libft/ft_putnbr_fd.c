@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 18:26:44 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/28 18:26:46 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/29 13:21:56 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/29 13:21:58 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	write(fd, &c, 1);
+	long	number;
+
+	number = n;
+	if (number < 0)
+	{
+		write(fd, "-", 1);
+		number *= -1;
+	}
+	if (number > 9)
+	{
+		ft_putnbr_fd(number / 10, fd);
+		ft_putnbr_fd(number % 10, fd);
+	}
+	else
+		ft_putchar_fd(number + '0', fd);
 }
 /*
 #include <fcntl.h>
 
 int main()
 {
-	int fd = open("test", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (fd == -1)
-	{
-        perror("Error opening file");
-        return 1;
-    }
-	ft_putchar_fd('0', fd);
-	printf("%i\n", fd);
-	close(fd);
+	int n = -2147483647;
+	ft_putnbr_fd(n, 1);	
 }
 */

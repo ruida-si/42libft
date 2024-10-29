@@ -17,7 +17,7 @@ static int	length(long number)
 	int	i;
 
 	i = 0;
-	if (number < 0)
+	if (number <= 0)
 	{
 		number *= -1;
 		i++;
@@ -36,8 +36,6 @@ char	*ft_itoa(int n)
 	char	*new;
 	long	number;
 
-	if (n == 0)
-		return (ft_strdup("0"));
 	number = n;
 	len = length(number);
 	if (number < 0)
@@ -45,8 +43,9 @@ char	*ft_itoa(int n)
 	new = malloc(len + 1);
 	if (!new)
 		return (NULL);
-	new[len] = '\0';
-	len--;
+	new[len--] = '\0';
+	if (n == 0)
+		new[len--] = '0';
 	while (number > 0)
 	{
 		new[len] = number % 10 + '0';
@@ -60,7 +59,7 @@ char	*ft_itoa(int n)
 /*
 int main()
 {
-	int n = 0;
+	int n = 2147483647;
 	printf(".%s.\n", ft_itoa(n));
 }
 */
