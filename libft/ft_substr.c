@@ -37,8 +37,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 int main()
 {
 	char s[] = "ruicampos";
-	int start = 3;
-	int len = 3;
-	printf("%s\n", ft_substr(s, start, len));
+	int start = 6;
+	int len = 2;
+	printf(".%s.\n", ft_substr(s, start, len));
 }
 */

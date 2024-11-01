@@ -27,14 +27,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (ft_strlen(src));
 }
-//
-// int main()
-// {
-//     char dst[5];
-//     char src[] = "Rui";
-//     size_t size = 1;
-//     printf("%s\n", dst);
-//     printf("%li\n", ft_strlcpy(dst, src, size));
-//     printf("%s\n", dst);
-// }
-//
+/*
+int main()
+{
+    char dst[5];
+    char src[] = "Rui";
+    int size = 5;
+    printf(".%s.\n", dst);
+    printf("%li\n", ft_strlcpy(dst, src, size));
+    printf(".%s.\n", dst);
+}
+*/

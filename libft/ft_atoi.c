@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 /*
 int main()
 {
-	char str[] = "\t \r \n 123";
+	char str[] = "-2147483667";
 	printf("%i\n", ft_atoi(str));
 	printf("%i\n", atoi(str));
 }

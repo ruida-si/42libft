@@ -9,7 +9,7 @@ SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_putnbr_fd.c
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-	ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -27,12 +27,10 @@ P_NAME = ./a.out
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) -c $(FLAGS) $(SOURCES)
+$(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-bonus: $(NAME)
-	$(CC) -c $(FLAGS) $(BONUS)
+bonus: $(NAME) $(BONUS_OBJ)
 	ar -rcs $(NAME) $(BONUS_OBJ)
 
 ap:

@@ -38,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int main()
 {
-	char s[] = "ruiuri";
+	char s[] = "ruicui";
 	char set[] = "rui";
 	printf(".%s.\n", ft_strtrim(s, set));
 }
