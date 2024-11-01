@@ -46,7 +46,7 @@ static int	length(char const *s, char c)
 	return (len);
 }
 
-void	free_mem(char **array, int string)
+static void	free_mem(char **array, int string)
 {
 	while (string >= 0)
 	{
@@ -56,7 +56,7 @@ void	free_mem(char **array, int string)
 	free(array);
 }
 
-char	**do_split(char const *s, char **array, char c)
+static char	**do_split(char const *s, char **array, char c)
 {
 	int	i;
 	int	j;

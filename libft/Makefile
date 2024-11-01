@@ -9,7 +9,7 @@ SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_putnbr_fd.c
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-		
+	ft_lstdelone.c ft_lstclear.c ft_lstiter.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -17,7 +17,7 @@ CC = cc
 
 OBJ = $(SOURCES:.c=.o)
 
-BONUS_O = $(BONUS:.c=.o)
+BONUS_OBJ = $(BONUS:.c=.o)
 
 NAME = libft.a
 
@@ -33,7 +33,7 @@ $(NAME):
 
 bonus: $(NAME)
 	$(CC) -c $(FLAGS) $(BONUS)
-	ar -rcs $(NAME) $(BONUS_O)
+	ar -rcs $(NAME) $(BONUS_OBJ)
 
 ap:
 	$(CC) $(FLAGS) $(SOURCES)
@@ -44,7 +44,7 @@ db:
 	gdbtui $(P_NAME)
 
 clean:
-	rm -rf $(OBJ) $(BONUS_O)
+	rm -rf $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
 	rm -rf $(NAME)

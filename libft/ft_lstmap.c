@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:33:01 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/29 18:33:04 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/30 15:14:27 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/30 15:14:30 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*last;
+	int		i;
+	t_list	*new;
 
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	if (!lst || !f || !del)
+		return (NULL);
+	
+	i = ft_lstsize(lst);
+	new = malloc(sizeof(t_list) * i);
+	if (!new)
+		return (NULL);
+
+
 }
-/*
-int main()
-{
-	t_list *new = ft_lstnew("porto");
-	t_list *lst = ft_lstnew("rui");
-	lst->next = ft_lstnew("campos");
-	printf("%s\n", (char *)ft_lstlast(lst)->content);
-	ft_lstadd_back(&lst, new);
-	printf("%s\n", (char *)ft_lstlast(lst)->content);	
-}
-*/

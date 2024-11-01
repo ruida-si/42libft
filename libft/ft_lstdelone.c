@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:33:01 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/29 18:33:04 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/30 12:02:14 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/30 12:02:16 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*last;
-
-	if (!*lst)
-	{
-		*lst = new;
+	if (!lst || !del)
 		return ;
-	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	del(lst->content);
+	free(lst);
 }
-/*
-int main()
-{
-	t_list *new = ft_lstnew("porto");
-	t_list *lst = ft_lstnew("rui");
-	lst->next = ft_lstnew("campos");
-	printf("%s\n", (char *)ft_lstlast(lst)->content);
-	ft_lstadd_back(&lst, new);
-	printf("%s\n", (char *)ft_lstlast(lst)->content);	
-}
-*/

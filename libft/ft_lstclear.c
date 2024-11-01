@@ -1,37 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:33:01 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/10/29 18:33:04 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/10/30 12:15:09 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/10/30 12:15:12 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*last;
+	t_list	*temp;
 
-	if (!*lst)
-	{
-		*lst = new;
+	if (!*lst || !del)
 		return ;
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = temp;
 	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	*lst = NULL;
 }
 /*
+void del(void *node)
+{
+	node = NULL;
+}
 int main()
 {
-	t_list *new = ft_lstnew("porto");
-	t_list *lst = ft_lstnew("rui");
-	lst->next = ft_lstnew("campos");
-	printf("%s\n", (char *)ft_lstlast(lst)->content);
-	ft_lstadd_back(&lst, new);
-	printf("%s\n", (char *)ft_lstlast(lst)->content);	
+	t_list *node;
+	
+	node = ft_lstnew("rui");
+	node->next = ft_lstnew("porto");
+	printf("%s\n", (char *)node->content);
+	if (node)
+		printf("yes\n");
+	ft_lstclear(&node, del);
+	if (!node)
+		printf("nothing to print\n");
 }
 */
