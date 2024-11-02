@@ -14,8 +14,6 @@
 # define LIBFT_H
 
 # include <unistd.h>
-# include <stdio.h> //DELETE BEFORE DELIVER
-# include <string.h>
 # include <stdlib.h>
 
 typedef struct s_list

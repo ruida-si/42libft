@@ -13,7 +13,7 @@
 #include "libft.h"
 
 static t_list	*create_lst(t_list *lst, void *(*f)(void *),
-					void (*del)(void *))
+							void (*del)(void *))
 {
 	t_list	*new;
 	void	*content;
